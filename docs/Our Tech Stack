@@ -1,0 +1,3 @@
+We are using MongoDB, Express, REACT, and NodeJS. We chose this technology stack because we think it works best for web-based 
+applications, especially since NodeJS and MongoDB mesh together very well. We also considered using Python with Flask and MySQL 
+for the database, but we figured those would be much messier to integrate. 

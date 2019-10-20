@@ -1,0 +1,4 @@
+Logged in or not, the client is shown our homepage (user story 1) and from the homepage when they search a destination (user story 2) 
+they will be shown multiple methods of travel such as planes, trains, buses, etc. for getting to their destination! The user may select 
+which methods of travel they want to see by checking some boxes, and the information is already sorted by cheapest flights for the users, 
+but if the user wishes, they may sort by airline, or company they are using for travel.

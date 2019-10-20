@@ -1,0 +1,5 @@
+After logging in and entering the new destination (refer to user story 1 and 2), the application will display the route to the entered 
+destination. It will choose a route based on the traffic and preferred method of transportation, resulting in the most efficient path to 
+the destination. For example, if there is an accident on the highway and the method of transportation is a car, the car will be rerouted 
+to use local roads. Regarding the methods of transportation, the application will support car, biking, walking, and the various methods 
+of public transportation. Private transportation such as Uber or Lyft will not be supported due to their own system determining the route.
