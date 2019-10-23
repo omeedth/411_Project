@@ -37,10 +37,10 @@
     "webpack-hot-middleware": "^2.25.0"
   },
   "scripts": {
-    "start:dev": "SET NODE_ENV=development && nodemon .\\index.js",
+    "start:dev": "SET NODE_ENV=development&& nodemon .\\index.js",
     "start": "node .\\index.js",
-    "build": "SET NODE_ENV=production && npm run clean && node_modules\\.bin\\webpack --config webpack.config.js",
-    "build:dev": "SET NODE_ENV=development && npm run clean && node_modules\\.bin\\webpack --config webpack.config.js",
+    "build": "SET NODE_ENV=production&& npm run clean && node_modules\\.bin\\webpack --config webpack.config.js",
+    "build:dev": "SET NODE_ENV=development&& npm run clean && node_modules\\.bin\\webpack --config webpack.config.js",
     "clean": "rd /s /q .\\build && mkdir build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

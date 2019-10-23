@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
 
+import Table from '../../components/Table/Table';
+
 class LandingPage extends React.Component {
     constructor(props) {
         super(props)
@@ -49,12 +51,21 @@ class LandingPage extends React.Component {
                 // 'Content-Type': 'application/x-www-form-urlencoded',
             },
             body: JSON.stringify(bodyData) // body data type must match "Content-Type" header
-        }).then(res => res.json()).then((response) => {
-            console.log(response.data)
+        }).then(res => res.json()).then((response) => {                    
             this.setState({data: JSON.stringify(response.data)});
-        }).catch(function (err) {
+            console.log(response.data);
+            for(var key in response.data) {
+                console.log('Key: ' + key);
+                console.log('Value: ' + response.data[key]);
+                console.log('--------------------------------')
+            }
+        }).catch((err) => {
+            console.log(err)
             this.setState({data: "{}"});
         })
+
+        // Convert Data into a list format before inputting into the Table
+
 
     }
 
@@ -69,6 +80,8 @@ class LandingPage extends React.Component {
                     <input type="submit" value="Submit" />
                 </form>
                 <p>{this.state.data}</p>
+                {/* Example Below on how to add data into a Table Component */}
+                <Table headers={['header 1','header 2','header 3']} data={[['r1 d1','r1 d2','r1 d3'],['r2 d1','r2 d2','r2 d3'],['r3 d1','r3 d2','r3 d3']]}></Table>
             </div>
         );
     }

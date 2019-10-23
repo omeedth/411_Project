@@ -43,10 +43,13 @@ const amadeus = new Amadeus({
 
 // -------------------------- //
 
+console.log(process.env.NODE_ENV);
+
 if (process.env.NODE_ENV === 'development') {
+    console.log('Using Hod Middleware!');  
     app.use(require('webpack-dev-middleware')(compiler, {
         publicPath: webpackConfig.output.publicPath
-    }));
+    }));  
     app.use(require('webpack-hot-middleware')(compiler));
 }
 app.use(express.static('./build'));
