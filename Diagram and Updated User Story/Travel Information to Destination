@@ -1,0 +1,7 @@
+User accesses homepage
+User enters a starting point and a destination and the preferred means of travel (may be more than one)
+Session id created and stored in session table [still a bit confused by how we would implement this — I assume we have to though]
+App hits API and returns data 
+Data displayed to user, sorted by cheapest fares
+User may choose to re-sort data based on a few different filters
+Data displayed to user, sorted by their chosen filter(s)
