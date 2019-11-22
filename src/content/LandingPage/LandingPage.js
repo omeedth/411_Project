@@ -1,13 +1,46 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
 
-import Table from '../../components/Table/Table';
+import './_overrides.scss';
+
+import { Route } from 'react-router-dom';
+
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import MenuIcon from '@material-ui/icons/Menu';
+
+import FlightSegments from '../../components/FlightSegments/FlightSegments';
+import FacebookButton from '../../components/FacebookButton/FacebookButton';
+
+const useStyles = makeStyles(theme => ({
+    root: {
+        flexGrow: 1,
+    },
+    menuButton: {
+        marginRight: theme.spacing(2),
+    },
+    title: {
+        flexGrow: 1,
+    },
+}));
+
+function classes() {
+    useStyles();
+    return null;
+}
 
 class LandingPage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            data: '',
+            headers: '',
+            data: [],
             origin: '',
             destination: '',
             departure: ''
@@ -15,6 +48,11 @@ class LandingPage extends React.Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+
+        /* Styles */           
+        // this.classes = useStyles();    
+
+        /* Classes */         
     }
 
     handleChange(event) {
@@ -41,7 +79,7 @@ class LandingPage extends React.Component {
             departureDate: departureDate
         }
 
-        fetch('/api/post',{
+        fetch('/amadeus/lowfare',{
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -51,38 +89,85 @@ class LandingPage extends React.Component {
                 // 'Content-Type': 'application/x-www-form-urlencoded',
             },
             body: JSON.stringify(bodyData) // body data type must match "Content-Type" header
-        }).then(res => res.json()).then((response) => {                    
-            this.setState({data: JSON.stringify(response.data)});
-            console.log(response.data);
-            for(var key in response.data) {
-                console.log('Key: ' + key);
-                console.log('Value: ' + response.data[key]);
-                console.log('--------------------------------')
-            }
+        }).then(res => res.json()).then((response) => {  
+            
+            var data = []
+            response.data.forEach((flightOffer) => {
+                var datum = {}
+                flightOffer.offerItems.forEach((service) => {
+                    service.services.forEach((segment) => {
+                        segment.segments.forEach((flight) => {
+                            Object.keys(flight.flightSegment).forEach((key) => {
+                                datum[key] = flight.flightSegment[key];
+                            })
+                            // datum['pricingDetailPerAdult'] = flight.flightSegment.pricingDetailPerAdult;
+                            // pricingDetailPerAdult
+                            //  - travelClass
+                            //  - fareClass
+                            //  - availability
+                            //  - fareBasis
+                        })                                             
+                    })
+                    // console.log(service)
+                    datum['pricePerAdult'] = service.pricePerAdult;
+                    // price
+                    //  - total
+                    //  - totalTaxes
+                    // pricePerAdult
+                    //  - total
+                    //  - totalTaxes                  
+                })
+                data.push(datum);
+            });
+
+            // console.log(data)
+            this.setState({data});
+
         }).catch((err) => {
             console.log(err)
-            this.setState({data: "{}"});
+            this.setState({data: []});
         })
 
         // Convert Data into a list format before inputting into the Table
-
 
     }
 
     render() {
         return (
-            <div className="container">
-                <h1>Our 411 Dashboard</h1>
-                <form onSubmit={this.handleSubmit}>
-                    <input type="text" name="origin" value={this.state.origin} onChange={this.handleChange} />
-                    <input type="text" name="destination" value={this.state.destination} onChange={this.handleChange} />
-                    <input type="text" name="departure" value={this.state.departure} onChange={this.handleChange} />
-                    <input type="submit" value="Submit" />
-                </form>
-                <p>{this.state.data}</p>
-                {/* Example Below on how to add data into a Table Component */}
-                <Table headers={['header 1','header 2','header 3']} data={[['r1 d1','r1 d2','r1 d3'],['r2 d1','r2 d2','r2 d3'],['r3 d1','r3 d2','r3 d3']]}></Table>
-            </div>
+            // <div className="container">
+            //     <h1>Our 411 Dashboard</h1>
+            //     <FacebookButton />
+            //     <form onSubmit={this.handleSubmit}>
+            //         <input type="text" name="origin" value={this.state.origin} onChange={this.handleChange} />
+            //         <input type="text" name="destination" value={this.state.destination} onChange={this.handleChange} />
+            //         <input type="text" name="departure" value={this.state.departure} onChange={this.handleChange} />
+            //         <input type="submit" value="Submit" />
+            //     </form>
+            //     <FlightSegments data={this.state.data} />
+            //     {/* <p>{this.state.data}</p> */}
+            //     {/* Example Below on how to add data into a Table Component */}
+            //     {/* <Table headers={this.state.headers} data={this.state.data}></Table> */}
+            //     {/* <Table headers={['header 1','header 2','header 3']} data={[['r1 d1','r1 d2','r1 d3'],['r2 d1','r2 d2','r2 d3'],['r3 d1','r3 d2','r3 d3']]}></Table> */}
+            // </div>
+            <>
+                <AppBar position="static">
+                    <Toolbar>
+                        <IconButton edge="start" className={""} color="inherit" aria-label="menu">
+                        <MenuIcon />
+                        </IconButton>
+                        <Typography variant="h6" className={""}>
+                        News
+                        </Typography>
+                        <Button color="inherit">Login</Button>
+                    </Toolbar>
+                </AppBar>
+                <Container spacing={0} classes={{ root: 'no-padding' }} className={""}>  
+                    <Grid>
+                        {/* This is where the body of the page begins! */}
+                        <Button color="primary" onClick={() => {fetch('/auth/facebook',{crossDomain:true,}).then(res => res.json()).then(data => console.log('Data:',data)).catch(err => {console.log('Error:',err)})}}>Facebook Login</Button>
+                    </Grid>
+                </Container>  
+            </>          
         );
     }
 }

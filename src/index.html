@@ -1,5 +1,14 @@
 <!DOCTYPE html>
-
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <!-- <script type="text/javascript"> /* This is a dummy script to make Facebook OAuth Work */ </script> -->
+    <script type="text/javascript"> // This is required because Facebook appends '_#_' to the url after auth
+        if (window.location.hash && window.location.hash == '#_=_') {
+            window.location.hash = '';
+        }
+    </script>
+</head>
 <body>
     <div id="root" />
 </body>

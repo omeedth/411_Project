@@ -13,6 +13,7 @@ function App() {
       <Router>                
           <Switch>
             <Route exact path="/" component={LandingPage} />
+            {/* <Route exact path="" component={}/> */}
           </Switch>        
       </Router>
     </>

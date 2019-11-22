@@ -10,7 +10,7 @@ class TableBody extends React.Component {
     }
 
     render() {
-        return (
+        return (Array.isArray(this.props.data)) ? (
             <tbody>
                 {this.props.data.map((tr,index) => {
                     return (
@@ -24,7 +24,7 @@ class TableBody extends React.Component {
                     )
                 })}
             </tbody>
-        );
+        ) : null;
     }
 
 }

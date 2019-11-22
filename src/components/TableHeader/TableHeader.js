@@ -11,7 +11,7 @@ class TableHeader extends React.Component {
 
     render() {
 
-        return (
+        return (Array.isArray(this.props.headers)) ? (
             <thead>
                 <tr>
                     {this.props.headers.map((header, index) => {
@@ -19,7 +19,7 @@ class TableHeader extends React.Component {
                     })}
                 </tr>
             </thead>
-        );
+        ) : null;
     }
 
 }
