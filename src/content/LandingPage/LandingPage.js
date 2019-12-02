@@ -14,6 +14,10 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import SaveIcon from '@material-ui/icons/Save';
+import EditIcon from '@material-ui/icons/Edit';
+import TextField from '@material-ui/core/TextField';
 
 import FlightSegments from '../../components/FlightSegments/FlightSegments';
 import FacebookButton from '../../components/FacebookButton/FacebookButton';
@@ -25,10 +29,25 @@ const useStyles = makeStyles(theme => ({
     menuButton: {
         marginRight: theme.spacing(2),
     },
+    rightToolbar: {
+        marginLeft: 'auto',
+        marginRight: -12,
+    },
     title: {
         flexGrow: 1,
     },
+    container: {
+        display: 'flex',
+        flexWrap: 'wrap',
+      },
+      textField: {
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1),
+        width: 200,
+      },
 }));
+
+
 
 function classes() {
     useStyles();
@@ -156,17 +175,57 @@ class LandingPage extends React.Component {
                         <MenuIcon />
                         </IconButton>
                         <Typography variant="h6" className={""}>
-                        News
+                        411 Dashboard
                         </Typography>
-                        <Button color="inherit">Login</Button>
+                        <section className={classes.rightToolbar}>
+                            <IconButton color="inherit" aria-label="Save">
+                                <SaveIcon />
+                            </IconButton>
+                            <IconButton color="inherit" aria-label="More Options">
+                                <MoreVertIcon />
+                            </IconButton>
+                            <Button color="inherit">Login</Button>
+                        </section>
                     </Toolbar>
                 </AppBar>
-                <Container spacing={0} classes={{ root: 'no-padding' }} className={""}>  
-                    <Grid>
+                {/*<Container spacing={0} classes={{ root: 'no-padding' }} className={""}>
+                    <Grid> */}
                         {/* This is where the body of the page begins! */}
-                        <Button color="primary" onClick={() => {fetch('/auth/facebook',{crossDomain:true,}).then(res => res.json()).then(data => console.log('Data:',data)).catch(err => {console.log('Error:',err)})}}>Facebook Login</Button>
-                    </Grid>
-                </Container>  
+                        {/*<Button color="primary" onClick={() => {fetch('/auth/facebook',{crossDomain:true,}).then(res => res.json()).then(data => console.log('Data:',data)).catch(err => {console.log('Error:',err)})}}>Facebook Login</Button>
+                    </Grid>*/}
+                {/*</Container>*/}
+
+                {/*Start and End Location Forms */}
+                <form className={classes.root} noValidate autoComplete="off">
+                    <TextField id="standard-basic" label="Start Location" />
+                    <TextField id="standard-basic" label="End Location" />
+                </form>
+
+                {/* Date and Time pickers */}
+                <form className={classes.container} noValidate>
+                    <TextField
+                        id="date"
+                        label="Start Date"
+                        type="date"
+                        defaultValue="2019-01-01"
+                        className={classes.textField}
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                    />
+                    <TextField
+                        id="date"
+                        label="End Date"
+                        type="date"
+                        defaultValue="2019-01-01"
+                        className={classes.textField}
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                    />
+                </form>
+
+                <Button color="primary">Submit</Button>
             </>          
         );
     }
