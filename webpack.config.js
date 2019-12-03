@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const buildDir = path.resolve(__dirname, './build');
+const currentDir = __dirname;
 
 let config = {
     node: {
@@ -42,7 +43,8 @@ let config = {
 };
 
 if (process.env.NODE_ENV === 'development') {
-    const webpackHotMiddleware = 'webpack-hot-middleware/client?path=//localhost:3000/__webpack_hmr&reload=true';
+    // const webpackHotMiddleware = 'webpack-hot-middleware/client?path=//localhost:3000/__webpack_hmr&reload=true';
+    const webpackHotMiddleware = 'webpack-hot-middleware/client?path=/__webpack_hmr&reload=true';
     config = {
         ...config,
         mode: 'development',
@@ -50,7 +52,8 @@ if (process.env.NODE_ENV === 'development') {
             hot: true
         },
         entry: {
-            main: ['./src/index.js', webpackHotMiddleware]
+            // Error HERE vvv I think for when pushing to Google App Engine ('./src/index.js' Not Found!!!)
+            main: ['./src/index.js', webpackHotMiddleware] // -> [__dirname + '/src/index.js', webpackHotMiddleware]
         },
         plugins: [
             ...config.plugins,
@@ -61,7 +64,7 @@ if (process.env.NODE_ENV === 'development') {
     config = {
         ...config,
         entry: {
-            main: ['babel-polyfill', './src/index.js']
+            main: ['babel-polyfill', './src/index.js'] // -> ['babel-polyfill', __dirname + '/src/index.js']
         },
         mode: 'production',
     }
