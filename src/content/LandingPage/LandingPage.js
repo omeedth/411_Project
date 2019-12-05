@@ -286,7 +286,7 @@ class LandingPage extends React.Component {
 
                 </form>
 
-                <p>{this.state.data}</p>
+                <p>{JSON.stringify(this.state.data)}</p>
                 
             </>          
         );
