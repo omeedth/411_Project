@@ -1,0 +1,20 @@
+Team Members: Alex Thomas, Jenny Li, David Wang, and Mari Rooney
+
+Primary Idea:
+Our application will essentially be a travel aid. We will use data from sites such as hotels.com, Airbnb, Hertz, Zipcar, and Google flight 
+search to provide information about the best deals on places to stay and modes of transportation in/to the user’s destination of choice. 
+We will also pull data from the user’s Facebook or Instagram account in order to generate a list of places they might be interested in 
+visiting within the city/region they are visiting. We will use TripAdvisor to pick the highest rated locations and to provide information 
+on entry fees, etc. Additionally, we will tell the user what form of transportation will be the least expensive and most convenient for 
+travelling to the attractions we’ve gathered for them (such as ride-sharing, rental bikes, or the metro/bus). We will use the user’s 
+Google login information as our third-party authenticator. Users will be required to create a profile within the application. 
+
+
+Secondary Idea:
+This application is intended to be a shopping aid. Users will enter a specific product or product category they wish to receive 
+information on. Pulling data from shopping sites, such as Amazon, eBay, Walmart and BestBuy, for various products, our application 
+generates the product listing with the lowest overall price, including shipping, either for each individual site or across all platforms. 
+The app will also track users’ purchase history and use that data to generate recommendations on products they may wish to buy in the 
+future. We will employ the user’s Google login as the form of third party authentication. Users will be required to create a profile 
+within the application.
+
