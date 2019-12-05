@@ -18,7 +18,7 @@ The app will also track users’ purchase history and use that data to generate 
 future. We will employ the user’s Google login as the form of third party authentication. Users will be required to create a profile 
 within the application.
 
-UPDATE:
+UPDATE (12.5.19):
 The final version of our app uses data from the Amadeus and Yelp Fusion APIs to help users find cheap flights to and tourist attractions 
 at a particular destination. We log users in using Facebook and store their credentials in a database on Cloud Firestore. We permit users 
 to bookmark flights and places they are interested in. 
