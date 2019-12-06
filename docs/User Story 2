@@ -1,5 +1,3 @@
-When entering a new destination, a user may enter a city or zipcode to search for their destination. If the location they have searched 
-for is invalid (does not exist as a location due to spelling error or does not refer to a location by zipcode), it will return that their 
-search returned no matches and to try again. If they are logged in (user story 1), users should be able to see their previous searches as 
-they are typing and locations of interest that they have bookmarked or “saved for later” earlier. If there are multiple locations 
-corresponding to the name they have typed, all those locations should be returned as a search result for the user to select.
+When a user accesses our site, logged in or not, they will see a search bar with three fields: Start Location, End Location, and 
+Start Date. The user will enter information into each box and click the submit button. This will tell our app to hit the Amadeus API
+and get flight data for the specified journey. We will display this data to the user.
