@@ -1,8 +1,3 @@
-When a user first accesses our site they will be able to press a button on the homepage that will take them to a separate “log-in” 
-page (users may also use our application without logging in, however, they will be unable to access personalized features or 
-recommendations -- they will have to enter all search information manually). On this page they will have the option either 
-to log into their preexisting account or to create a new account. Users will log in using either their Facebook credentials -- 
-if they are a new user they will be prompted to link their account. Once users have logged in, our app will return them to the 
-homepage and provide them with recommendations based on their user profiles and information pulled from their Facebook. New users 
-will be brought to a “create profile” page where they will be required to enter basic information about themselves (name, location, 
-email, etc.) along with their destination preferences. Once they have saved their info they will be returned to our homepage. 
+When a user first accesses our site they will see a button labelled ‘Facebook Login.’ When the user clicks this button a window pop-up 
+and prompt them to enter their Facebook credentials. Once they have done so they will be redirected to our site and their credentials be
+stored in our database. 
