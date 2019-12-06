@@ -1,4 +1,3 @@
-Logged in or not, the client is shown our homepage (user story 1) and from the homepage when they search a destination (user story 2) 
-they will be shown multiple methods of travel such as planes, trains, buses, etc. for getting to their destination! The user may select 
-which methods of travel they want to see by checking some boxes, and the information is already sorted by cheapest flights for the users, 
-but if the user wishes, they may sort by airline, or company they are using for travel.
+When a user accesses our site, logged in or not, they will see a second search bar with one field (below the one described in User 
+Story 2): Address. The user will enter a city’s name into the box and click the submit button. This will tell our app to hit the Yelp API 
+and get data on the tourist attractions in the specified city. We will display this data to the user. 
