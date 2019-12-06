@@ -20,5 +20,4 @@ within the application.
 
 UPDATE (12.5.19):
 The final version of our app uses data from the Amadeus and Yelp Fusion APIs to help users find cheap flights to and tourist attractions 
-at a particular destination. We log users in using Facebook and store their credentials in a database on Cloud Firestore. We permit users 
-to bookmark flights and places they are interested in. 
+at a particular destination. We log users in using Facebook and store their credentials in a database on Cloud Firestore.
