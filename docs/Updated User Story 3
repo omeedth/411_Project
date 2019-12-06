@@ -1,12 +1,9 @@
 Step-by-step process for User Story 3 (the happy path)
 
 1. User accesses homepage
-2. User enters a starting point and a destination and the preferred means of travel (may be more than one)
-3. Session id created and stored in session table 
-4. App hits API and returns data 
-5. Data displayed to user, sorted by cheapest fares
-6. User may choose to re-sort data based on a few different filters
-7. Data displayed to user, sorted by their chosen filter(s)
+2. User enters a starting point and a destination
+3. App hits API and returns data 
+4. Data displayed to user, sorted by cheapest fares
 
 What could go wrong?
 - Incorrect format of input 
@@ -22,7 +19,7 @@ Chosen architecture/platform: Node.js
 
 Why did we choose it? 
 Because our team members are more familiar with this platform. It also integrates well with the other components of our technology stack:
-MongoDB, Express, and React.  
+Cloud Firestore, Express, and React.  
 
 We considered using Python with Django but when we discussed web applications, the first thought that came to mind was JavaScript/HTML, 
 and not Python. Also, none of us had any prior experience with Django/Python for web development.
